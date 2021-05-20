@@ -5,7 +5,6 @@ pragma solidity 0.8.4;
 contract GreengrocerSupply{
 
     string public fruit;
-    uint256 fruitInventory;
     uint256 constant minInventory = 30;
     
     constructor(){
@@ -13,15 +12,14 @@ contract GreengrocerSupply{
     }
     
     function setFruitInventory(uint fruitInventory) public{
-       fruitInventory = 45;
     }
     
-    function verifyWhetherToBuy(uint256 fruitInventory) public pure 
+    function verifyWhetherToBuy(uint256 fruitInventory) public pure
         returns (bool buy){
             if(fruitInventory < minInventory){
-                    return true;
-                } else {
-                    return false;
-                }
-        }
+                return true;
+            } else {
+                return false;
+            }
     }
+}
