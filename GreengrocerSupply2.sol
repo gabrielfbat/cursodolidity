@@ -58,7 +58,7 @@ contract GreegrocerSupply2 {
 
     event newFruit(string _fruitName, uint _fruitInventory, uint _fruitMinInventory);
     
-    event sale(string _FruitName, uint _fruitQuantity);
+    event sale(string _fruitName, uint _fruitQuantity);
     
     event newWinningBid(string _fruitName, uint _fruitQuantity, address _supplierName, uint amountPayable);
    
@@ -105,7 +105,7 @@ contract GreegrocerSupply2 {
         sale_fruitQuantity;
         
         Sale memory sale = Fruit(fruitName, fruitQuantity);
-        emit sale (FruitName, fruitQuantity)
+        emit sale (fruitName, fruitQuantity)
     }
     
     //Fornecedores podem colocar ofertas de frutas, dese que estas sejam comercializadas pela Quitanda (i.e., estar na lista de frutas).
