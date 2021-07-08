@@ -16,8 +16,6 @@ contract LeaseRecord {
     
     address public owner;
     
-    uint totalAmountPayable;
-    
     uint taxRate;
     
     Lease[] public rentals;
@@ -29,21 +27,19 @@ contract LeaseRecord {
     
     constructor() {
         owner = msg.sender;
+        government = 0x389FCf4677912eAbC301C4D010119854159dd984;
+        taxRate = 20;
     }
     
-    function setTaxRate(uint newTaxRate) public onlyGovernment returns{
+    function setTaxRate(uint) public onlyGovernment returns(uint newTaxRate){
         taxRate = newTaxRate;
     }
-
-    function calculateTotalAmountPayable() public view returns(uint totalAmountPayable){
-        totalAmountPayable = rentPayable+((rentPayable*20)*(taxRate/100));
-    }
     
-    function registerLease(
+   function registerLease(
         string memory paramLeaser,
         string memory paramLeasee,
         string memory paramEstateAddress,
-        uint memory paramRentPayable,
+        uint paramRentPayable
     ) external returns (bool) {
         require(msg.sender == owner, "Only the owner can register a lease agreement.");
         Lease memory newLeaseRecord = Lease(paramLeaser, paramLeasee, paramEstateAddress, paramRentPayable);
